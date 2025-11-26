@@ -1,5 +1,6 @@
 ﻿using StockManagement.Command;
 using StockManagement.Service.API;
+using StockManagement.Service.Window;
 using StockManagement.View;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,21 @@ namespace StockManagement.ViewModel
     public class LoginViewModel : INotifyPropertyChanged
     {
         private readonly ApiService _apiService;
+        private readonly IWindowService _windowService;
 
-        public LoginViewModel(ApiService apiService)
+        public LoginViewModel(ApiService apiService, IWindowService windowService)
         {
             _apiService = apiService;
+            _windowService = windowService;
+
             LoginCommand = new RelayCommand(async () => await Login());
+            RegistCommand = new RelayCommand(Regist);
         }
         public string Email { get; set; }
         public string Password { get; set; }
 
         public ICommand LoginCommand { get; }
+        public ICommand RegistCommand { get; set; }
 
         private async Task Login()
         {
@@ -44,6 +50,12 @@ namespace StockManagement.ViewModel
             {
                 MessageBox.Show("실패");
             }
+        }
+
+        private void Regist()
+        {
+            _windowService.ShowWindow<RegistViewModel>();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

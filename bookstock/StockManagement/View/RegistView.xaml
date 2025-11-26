@@ -1,0 +1,24 @@
+﻿<Window x:Class="StockManagement.View.RegistView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StockManagement.View"
+        mc:Ignorable="d"
+        xmlns:helpers="clr-namespace:StockManagement.Helpers"
+
+        Title="RegistView" Height="224" Width="424" MaxHeight="224" MaxWidth="424">
+    <Grid>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="36,27,0,0" VerticalAlignment="Top"/>
+        <Label Content="이름" HorizontalAlignment="Left" Margin="36,58,0,0" VerticalAlignment="Top"/>
+        <Label Content="비밀번호" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Center"/>
+        <Label Content="비밀번호 확인" HorizontalAlignment="Left" Margin="36,122,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="중복 체크" HorizontalAlignment="Left" Margin="326,30,0,0" VerticalAlignment="Top" Command="{Binding DupEmailCommand}"/>
+        <Button Content="회원가입" HorizontalAlignment="Center" Margin="0,169,0,0" VerticalAlignment="Top"/>
+        <PasswordBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" helpers:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}" Margin="0,95,0,0"/>
+        <PasswordBox HorizontalAlignment="Center" Margin="0,126,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>
