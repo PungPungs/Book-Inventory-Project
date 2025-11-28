@@ -9,10 +9,9 @@ namespace StockManagement.View
     /// </summary>
     public partial class LoginView : Window
     {
-        public LoginView(LoginViewModel vm)
+        public LoginView()
         {
             InitializeComponent();
-            DataContext = vm;
         }
 
     }

@@ -10,7 +10,7 @@
         <TextBox HorizontalAlignment="Left" Margin="57,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox HorizontalAlignment="Left" Margin="57,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="로그인" HorizontalAlignment="Left" Margin="198,83,0,0" VerticalAlignment="Top" Width="43" Height="18" Command="{Binding LoginCommand}"/>
-        <Button Content="회원가입" HorizontalAlignment="Left" Margin="57,158,0,0" VerticalAlignment="Top" Width="88"/>
+        <Button Content="회원가입" HorizontalAlignment="Left" Margin="57,158,0,0" VerticalAlignment="Top" Width="88" Command="{Binding RegistCommand}"/>
         <Button Content="ID/PW 찾기" HorizontalAlignment="Left" Margin="154,158,0,0" VerticalAlignment="Top" Width="88"/>
         <Label Content="재고 관리 프로그램 ver 0.1" HorizontalAlignment="Left" Margin="57,39,0,0" VerticalAlignment="Top" Width="184" HorizontalContentAlignment="Center"/>
 

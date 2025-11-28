@@ -9,5 +9,7 @@ namespace StockManagement.Service.API
     public interface IApiService
     {
         Task<bool> LoginAsync(string email, string password);
+        Task<bool> RegistAsync(string name, string email, string password);
+        Task<bool> DuplicateAsync(string email);
     }
 }
