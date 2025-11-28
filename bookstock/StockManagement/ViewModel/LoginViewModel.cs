@@ -35,6 +35,14 @@ namespace StockManagement.ViewModel
 
         private async Task Login()
         {
+            if (Email == null) {
+                MessageBox.Show("이메일을 입력해주세요!"); 
+                    return;
+                }
+            else if (Password == null) {
+                MessageBox.Show("비밀번호를 입력해주세요!");
+                    return;
+                }
             bool success = await _apiService.LoginAsync(Email, Password);
 
             if (success)
@@ -48,7 +56,7 @@ namespace StockManagement.ViewModel
             }
             else
             {
-                MessageBox.Show("실패");
+                MessageBox.Show("ID/PW를 확인해주세요");
             }
         }
 

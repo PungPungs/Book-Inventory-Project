@@ -6,7 +6,111 @@
         xmlns:local="clr-namespace:StockManagement.View"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <Window.Resources>
+
+        <!-- Primary Theme -->
+        <SolidColorBrush x:Key="Primary" Color="#1754cf"/>
+        <SolidColorBrush x:Key="CardBackground" Color="White"/>
+        <SolidColorBrush x:Key="BorderBrushDark" Color="#d1d5db"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#111111"/>
+        </Style>
+
+        <!-- 공통 카드 스타일 -->
+        <Style x:Key="BookCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderBrush" Value="#e5e7eb"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Opacity="0.1" BlurRadius="8"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <DockPanel>
+
+        <!-- Header -->
+        <Border DockPanel.Dock="Top" Background="White" BorderBrush="#e5e7eb" BorderThickness="0 0 1 0" Padding="16">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <TextBlock Text="📚" FontSize="22" Margin="0,0,8,0"/>
+                    <TextBlock Text="Digital Library" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+                <Button Width="40" Height="40" Background="#f3f4f6" Cursor="Hand"
+                        BorderThickness="0" ToolTip="Refresh" Content="🔄"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <ScrollViewer>
+            <StackPanel Margin="40">
+
+                <!-- Search Section -->
+                <Grid Margin="0 0 0 30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox Grid.Column="0" Height="45" Margin="5"
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="전체"/>
+                        <ComboBoxItem Content="소설"/>
+                        <ComboBoxItem Content="인문"/>
+                        <ComboBoxItem Content="과학"/>
+                    </ComboBox>
+
+                    <TextBox Grid.Column="1" Height="45" Margin="5"/>
+
+                    <Button Grid.Column="2" Height="45" Margin="5"
+                            Background="{StaticResource Primary}" Foreground="White"
+                            Content="검색" FontWeight="Bold" Cursor="Hand"/>
+                </Grid>
+                <ItemsControl ItemsSource="{Binding Books}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource BookCardStyle}">
+                                <Grid Margin="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Text Section -->
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Category}" Foreground="{StaticResource Primary}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Author}" Foreground="Gray"/>
+                                    </StackPanel>
+
+                                    <!-- Placeholder Image -->
+                                    <Border Grid.Column="1" Background="#eee" Width="100" Height="150" 
+                            CornerRadius="6" Margin="10" HorizontalAlignment="Right">
+                                        <TextBlock Text="📘" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <!-- Items Layout -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+
 </Window>

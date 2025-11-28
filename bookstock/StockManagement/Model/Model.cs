@@ -13,5 +13,13 @@ namespace StockManagement.Model
             public string token { get; set; }
             public bool success { get; set; }
         }
+
+
+        public class Book
+        {
+            public string title { get; set; }
+            public string ISBN { get; set; }
+            public string author { get; set; }
+        }
     }
 }

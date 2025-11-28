@@ -48,10 +48,12 @@ namespace StockManagement
             // ViewModels
             services.AddTransient<LoginViewModel>();
             services.AddTransient<RegistViewModel>();
+            services.AddTransient<MainViewModel>();
 
             // View
             services.AddSingleton<LoginView>();
             services.AddSingleton<RegistView>();
+            services.AddSingleton<MainView>();
         }
 
     }
