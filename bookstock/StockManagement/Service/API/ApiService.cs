@@ -63,17 +63,17 @@ namespace StockManagement.Service.API
 
         }
 
-        public async Task<bool> RegistAsync(string name, string email, string password)
+        public async Task<bool> RegistAsync(string email, string name,  string password)
         {
             var payload = new
             {
-                name = name,
                 email = email,
+                name = name,
                 password = password
             };
             string jsonData = JsonSerializer.Serialize(payload);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var url = new Uri(_httpClient.BaseAddress, "rpc/regist");
+            var url = new Uri(_httpClient.BaseAddress, "rpc/business_regist");
             try
             {
                 _logger.Write("회원가입 요청 시작");
@@ -81,7 +81,7 @@ namespace StockManagement.Service.API
                 string body = await response.Content.ReadAsStringAsync();
                 _logger.Write($"응답 본문: {body}");
                 if (!response.IsSuccessStatusCode) { return false; }
-                _logger.Write("로그인 요청 성공");
+                _logger.Write("회원가입 요청 성공");
                 var responseJson = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<LoginResult>(responseJson);
                 if (result == null)
@@ -102,7 +102,7 @@ namespace StockManagement.Service.API
 
         public async Task<bool> DuplicateAsync(string email)
         {
-            var payload = new {email = email};
+            var payload = new {d_email = email};
             string jsonData = JsonSerializer.Serialize(payload);
             HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var url = new Uri(_httpClient.BaseAddress, "rpc/dupemail");

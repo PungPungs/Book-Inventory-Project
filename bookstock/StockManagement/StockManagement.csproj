@@ -102,6 +102,7 @@
     <Compile Include="Service\Window\IWindowService.cs" />
     <Compile Include="Service\Window\WindowService.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegistViewModel.cs" />
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
